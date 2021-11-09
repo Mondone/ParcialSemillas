@@ -11,17 +11,34 @@ describe "test primeras partes" {
 	const soja4 = new Soja( altura = 1.5, anioSemilla = 2009)
 	const quinoa = new Quinoa( altura = 1, anioSemilla = 2010, horasSol = 12)
 	const quinoa2 = new Quinoa( altura = 1, anioSemilla = 2001, horasSol = 9)
-	const parcela = new Parcelas(ancho=20, largo=1, horasSolParcela = 8)
+	const parcela1 = new Parcelas(ancho=20, largo=1, horasSolParcela = 8)
+	const parcela2 = new Parcelas(ancho=20, largo=1, horasSolParcela = 9)
 	
 	method initialize(){
-		parcela.plantarPlanta(soja1)
-		parcela.plantarPlanta(soja2)
-		parcela.plantarPlanta(soja3)
-		parcela.plantarPlanta(soja4)
+		parcela1.plantarPlanta(soja1)
+		parcela1.plantarPlanta(soja2)
+		parcela1.plantarPlanta(soja3)
+		parcela1.plantarPlanta(soja4)
 	}
 	
-test "no puede plantar " {
-	assert.throwsExceptionWithMessage("No se puede plantar, se supero la cantidad", {parcela.plantarPlanta(soja)})
-}	
+test "no se puede plantar 5 plantas de soja " {
+	assert.equals(4, parcela1.plantas().size())
+	assert.throwsExceptionWithMessage("No se puede plantar, se supero la cantidad", {parcela1.plantarPlanta(soja)})
 	
+}	
+
+test "menta prefiere suelo extenso"{
+	
+	assert.that(menta.esParcelaIdeal(parcela1))
+}
+
+test "quinoa no anda bien en parcela 1"{
+	
+	assert.notThat(quinoa.esParcelaIdeal(parcela1))
+}
+test "soja1 anda bien en parcela 2"{
+	
+	assert.that(soja1.esParcelaIdeal(parcela2))
+}
+
 }

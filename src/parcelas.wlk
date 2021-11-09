@@ -10,8 +10,9 @@ class Parcelas {
 	method hayLugar() = plantas.size() < self.cantidadMaximaPlantas()
 	// revisar plantarPlanta
 	method plantarPlanta(planta) {
-		if ( self.hayLugar() and horasSolParcela-planta.horasDeSol() <= 2)
-		plantas.add(planta)
+		if (self.hayLugar() and (horasSolParcela-planta.horasDeSol()<=2)) {//and horasSolParcela-planta.horasDeSol() <= 2) 
+			plantas.add(planta)
+		}
 		else {
 			self.error("No se puede plantar, se supero la cantidad")
 		}

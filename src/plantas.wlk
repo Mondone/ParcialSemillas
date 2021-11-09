@@ -1,7 +1,7 @@
 class Plantas {
 	
 	var property anioSemilla
-	var property altura
+	var property altura = 0
 	
 	method horasDeSol() 
 	method esFuerte()= self.horasDeSol() > 10
@@ -22,9 +22,9 @@ class Menta inherits Plantas {
 class Soja inherits Plantas {
 	
 	override method horasDeSol() {
-		if (altura < 0.5) {return 6}
-		if (0.5 < altura < 1) {return 7}
-		else {return 9}
+		if (altura < 0.5)          {return 6}
+		if (altura.between(0.5,1)) {return 7}
+		else                       {return 9}
 	}
 	override method daSemillas()= super() or (anioSemilla > 2007 and altura > 1)
 	override method espacioQueOcupa()= altura/2
