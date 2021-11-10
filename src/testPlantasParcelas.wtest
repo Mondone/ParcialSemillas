@@ -9,10 +9,11 @@ describe "test primeras partes" {
 	const soja2 = new Soja( altura = 1.5, anioSemilla = 2009)
 	const soja3 = new Soja( altura = 1.5, anioSemilla = 2009)
 	const soja4 = new Soja( altura = 1.5, anioSemilla = 2009)
+	const sojaTrans = new SojaTransgenica(altura = 1, anioSemilla = 2005)
 	const quinoa = new Quinoa( altura = 1, anioSemilla = 2010, horasSol = 12)
 	const quinoa2 = new Quinoa( altura = 1, anioSemilla = 2001, horasSol = 9)
 	const parcela1 = new Parcelas(ancho=20, largo=1, horasSolParcela = 8)
-	const parcela2 = new Parcelas(ancho=20, largo=1, horasSolParcela = 9)
+	const parcela2 = new Parcelas(ancho=1, largo=1, horasSolParcela = 9)
 	
 	method initialize(){
 		parcela1.plantarPlanta(soja1)
@@ -37,6 +38,11 @@ test "quinoa no anda bien en parcela 1"{
 	assert.notThat(quinoa.esParcelaIdeal(parcela1))
 }
 test "soja1 anda bien en parcela 2"{
+	
+	assert.that(soja1.esParcelaIdeal(parcela2))
+}
+
+test "soja transgenica anda bien en parcela 2" {
 	
 	assert.that(soja1.esParcelaIdeal(parcela2))
 }
